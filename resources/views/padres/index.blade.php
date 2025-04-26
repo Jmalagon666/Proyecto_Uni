@@ -3,117 +3,136 @@
 @section('title', 'Padres')
 
 @section('content_header')
-    <h1>Padres</h1>
+
 @stop
 
 @section('content')
+<br>
+<div class="container-xxl">
+    <div class="row mb-4">
+        <!-- Información del estudiante -->
+        <div class="col-12">
+            <div class="card" style="background-color: #007bff; color: white; border: none;">
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <img src="{{ asset('img/foto_de_estudiante.png') }}" alt="Estudiante" class="img-fluid mr-3"
+                        style="width: 150px; height: auto;">
+                    <div style="color: black;">
+                        <h1 class="mb-0" style="color: white;"><strong>MENSAJES</strong></h1>
+                        <p class="mb-0"><strong>Estudiante:</strong> Andrés Lozano</p>
+                        <p class="mb-0"><strong>Grado:</strong> 7mo</p>
+                        <p class="mb-0"><strong>Institución:</strong> Los Amiguitos</p>
+                        <p class="mb-0"><strong>Acudiente:</strong> Marta Lozano</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="card mt-4">
-  <div class="card-header">
-    Asistencia de Estudiantes
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Calendario de Asistencia</h5>
-    <p class="card-text">Visualiza la asistencia de los estudiantes desde aquí.</p>
-    <table class="table table-bordered text-center table-sm">
-      <thead>
-        <tr>
-          <th>Estudiante</th>
-          @php
-            $daysInMarch = 31;
-            $weekDays = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'];
-          @endphp
-          @for ($day = 1; $day <= $daysInMarch; $day++)
-            <th>{{ $day }}<br>{{ $weekDays[($day - 1) % 5] }}</th>
-          @endfor
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Juan Pérez</td>
-          @for ($day = 1; $day <= $daysInMarch; $day++)
-            <td>{!! $day % 2 == 0 ? '✔️' : '❌' !!}</td>
-          @endfor
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+    <div class="row">
+        <!-- Eventos -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header text-center">
+                    <h5>Eventos</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <img src="{{ asset('img/calendario.png') }}" alt="Notificaciones" class="img-fluid mb-2"
+                            style="width: auto; height: auto;">
+                        <li><span class="text-primary">●</span> Fecha actual</li>
+                        <li><span class="text-warning">●</span> Reunión de padres</li>
+                        <li><span class="text-danger">●</span> Entrega de informes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-<div class="card mt-4">
-  <div class="card-header">
-    Notas de Estudiantes
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Lista de Notas por Estudiante</h5>
-    <p class="card-text">Visualiza las notas de los estudiantes en las diferentes materias desde aquí.</p>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Estudiante</th>
-          <th>Materia 1</th>
-          <th>Materia 2</th>
-          <th>Materia 3</th>
-          <th>Materia 4</th>
-          <th>Materia 5</th>
-          <th>Materia 6</th>
-          <th>Materia 7</th>
-          <th>Materia 8</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Juan Pérez</td>
-          <td>85</td>
-          <td>90</td>
-          <td>78</td>
-          <td>88</td>
-          <td>92</td>
-          <td>80</td>
-          <td>87</td>
-          <td>89</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+        <!-- Opciones principales -->
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card h-100">
+                <div class="card-header text-center">
+                    <h5>Opciones Principales</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <a href="{{ route('padres.mensajes') }}"
+                                class="btn btn-light btn-block d-flex flex-column align-items-center justify-content-center h-100"
+                                style="height: 120px;">
+                                <img src="{{ asset('img/icono_de_mensajes.png') }}" alt="Mensajes"
+                                    class="img-fluid mb-2">
+                                <p class="mb-0">Mensajes</p>
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <a href="#"
+                                class="btn btn-light btn-block d-flex flex-column align-items-center justify-content-center h-100"
+                                style="height: 120px;">
+                                <img src="{{ asset('img/icono_de_consulta_asistencia.png') }}"
+                                    alt="Consultar Asistencia" class="img-fluid mb-2">
+                                <p class="mb-0">Consultar Asistencia</p>
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <a href="#"
+                                class="btn btn-light btn-block d-flex flex-column align-items-center justify-content-center h-100"
+                                style="height: 120px;">
+                                <img src="{{ asset('img/registro.png') }}" alt="Registro E/S" class="img-fluid mb-2">
+                                <p class="mb-0">Registro E/S</p>
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <a href="#"
+                                class="btn btn-light btn-block d-flex flex-column align-items-center justify-content-center h-100"
+                                style="height: 120px;">
+                                <img src="{{ asset('img/calificaciones_de_los_estudiantes.png') }}"
+                                    alt="Consultar Notas" class="img-fluid mb-2">
+                                <p class="mb-0">Consultar Notas</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="card mt-4">
-  <div class="card-header">
-    Avisos
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Lista de Avisos</h5>
-    <p class="card-text">Visualiza los avisos publicados en la aplicación desde aquí.</p>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Título</th>
-          <th>Descripción</th>
-          <th>Fecha de Publicación</th>
-          <th>Creado por</th>
-          <th>Rol</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Aviso 1</td>
-          <td>Este es el primer aviso de prueba.</td>
-          <td>2025-04-01</td>
-          <td>Juan Pérez</td>
-          <td>Administrador</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <!-- Notificaciones -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header text-center">
+                    <h5>
+                        <img src="{{ asset('img/notificaciones.png') }}" alt="Notificaciones" class="img-fluid mb-2"
+                            style="width: 50px; height: auto;">
+                        Notificaciones
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Nueva Actualización</strong></p>
+                    <p>Revise el deportado de asistencia para ver de qué se trata.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @stop
 
 @section('css')
-    {{-- Add here extra stylesheets --}}
+<style>
+.btn-light {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+}
+
+.btn-light img {
+    max-width: 50px;
+    margin-bottom: 10px;
+}
+</style>
 @stop
 
 @section('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+<script>
+console.log("Vista de Padres cargada correctamente.");
+</script>
 @stop
