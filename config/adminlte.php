@@ -327,8 +327,7 @@ return [
         [
             'text' => 'Admin',
             'route' => 'admin.index',
-            'icon' => 'fas fa-fw fa-hammer',
-  
+            'icon' => 'fas fa-fw fa-hammer', 
             // 'can' => 'admin',
         ],
         [
@@ -340,12 +339,14 @@ return [
         [
             'text' => 'Profesor',
             'route' => 'profesor.index',
-            'icon' => 'fas fa-fw fa-book',
+            'icon' => 'fas fa-fw fa-book', 
+            // 'can' => 'profe',
         ],
         [
             'text' => 'Padres',
             'route' => 'padres.index',
             'icon' => 'fas fa-fw fa-users',
+            // 'can' => 'padre',
         ],
         // [
         //     'text' => 'multilevel',
@@ -439,7 +440,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -484,12 +485,12 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@11',
                 ],
             ],
         ],
