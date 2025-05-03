@@ -110,7 +110,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'mode' => 'fullscreen',
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
@@ -312,41 +312,45 @@ return [
 
         // Sidebar items:
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
+            'text' => 'Roles',
+            'route' => 'roles.index',
             // 'can' => 'manage-blog',
         ],
         [
-            'text' => 'pages',
-            'url' => 'index',
+            'text' => 'Permisos',
+            'route' => 'permisos.index',
             'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
+        ],
+        [
+            'text' => 'Usuarios',
+            'route' => 'asignarrol.index',
+            'icon' => 'far fa-fw fa-file',
         ],
         ['header' => 'Roles'],
+            
         [
             'text' => 'Admin',
             'route' => 'admin.index',
             'icon' => 'fas fa-fw fa-hammer', 
-            // 'can' => 'admin',
+            //'can' => 'admin',
         ],
         [
             'text' => 'Coordinador',
             'route' => 'coordinador.index',
             'icon' => 'fas fa-fw fa-user',
-            // 'can' => 'user',
+            //'can' => 'user',
         ],
         [
             'text' => 'Profesor',
             'route' => 'profesor.index',
             'icon' => 'fas fa-fw fa-book', 
-            // 'can' => 'profe',
+            //'can' => 'profe',
         ],
         [
             'text' => 'Padres',
             'route' => 'padres.index',
             'icon' => 'fas fa-fw fa-users',
-            // 'can' => 'padre',
+            //'can' => 'padre',
         ],
         // [
         //     'text' => 'multilevel',

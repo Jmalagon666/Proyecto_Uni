@@ -2,6 +2,12 @@
 
 @section('title', 'Profesor')
 
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 @section('content_header')
 <h1>Profesor</h1>
 @stop
@@ -12,9 +18,8 @@
         Gestión de Avisos
     </div>
     <div class="card-body">
-        <h5 class="card-title">Lista de Avisos</h5>
-        <p class="card-text">Administra los avisos publicados en la aplicación desde aquí.</p>
-        <a href="#" class="btn btn-success mb-3">Agregar Aviso</a>
+        <a href="#" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#agregarAvisoModal">Agregar
+            Aviso</a>
         <table class="table table-striped">
             {{-- Setup data for datatables --}}
             @php
@@ -28,11 +33,8 @@
             'Acciones'
             ];
 
-            $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+            $btnDelete = '<button type="submit" class="btn btn-default text-danger mx-1 shadow" title="Delete">
                 <i class="fa fa-lg fa-fw fa-trash"></i>
-            </button>';
-            $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-                <i class="fa fa-lg fa-fw fa-eye"></i>
             </button>';
 
             $config = [
@@ -54,17 +56,18 @@
                     <td>{{ $aviso->creador }}</td>
                     <td>{{ $aviso->rol }}</td>
                     <td>
-                        <a href="{{route('profesor.edit', $aviso)}}" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+                        <a href="{{route('profesor.edit', $aviso)}}"
+                            class="btn btn-default text-primary mx-1 shadow" title="Edit">
                             <i class="fa fa-lg fa-fw fa-pen"></i>
                         </a>
 
-                            <form action="{{ route('profesor.destroy', $aviso->id) }}" method="POST"
-                                class="formEliminar" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                {!! $btnDelete !!}
-                            </form>
-                            {!! $btnDetails !!}
+                        <form action="{{ route('profesor.destroy', $aviso->id) }}" method="POST" class="formEliminar"
+                            style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            {!! $btnDelete !!}
+                        </form>
+               
                     </td>
                 </tr>
                 @endforeach
@@ -194,6 +197,47 @@
         </table>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="agregarAvisoModal" tabindex="-1" aria-labelledby="agregarAvisoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #017bfe">
+                <h5 class="modal-title" id="agregarAvisoModalLabel">Agregar Rol</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('profesor.store') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="titulo" name="titulo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rol" class="form-label">Rol</label>
+                        <input type="text" class="form-control" id="rol" name="rol" value="{{$rol_nombre}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="creador" class="form-label">Creado por</label>
+                        <input type="text" class="form-control" id="creador" name="creador" value="{{$usuario}}" readonly>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-success">Guardar Rol</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
 @stop
 
 @section('css')

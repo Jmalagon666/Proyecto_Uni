@@ -5,14 +5,21 @@ namespace App\Http\Controllers\Profesor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Aviso;
+use App\Models\Roles;
 
 class ProfesorController extends Controller
 {
     public function index()
     {
         $avisos = $avisos = Aviso::all();
+        $usuario = auth()->user()->name;
+        $rol_usuario = auth()->user()->role_id;
+        $rol_nombre = Roles::where('id', $rol_usuario)->value('name');
+        
+        
+        
         // dd($avisos);
-        return view('profesor.index', compact('avisos'));
+        return view('profesor.index', compact('avisos', 'rol_nombre', 'usuario'));
     }
 
     public function destroy($id)
@@ -42,6 +49,20 @@ class ProfesorController extends Controller
         $aviso->save();
 
         return redirect()->route('profesor.index')->with('success', 'Aviso actualizado correctamente.');
+    }
+
+    public function store(Request $request)
+    {
+        // Crear un nuevo aviso
+        $aviso = new Aviso();
+        $aviso->titulo = $request->input('titulo');
+        $aviso->descripcion = $request->input('descripcion');
+        $aviso->fecha_publicacion = now();
+        $aviso->rol = $request->input('rol');
+        $aviso->creador = $request->input('creador');
+        $aviso->save();
+
+        return redirect()->route('profesor.index')->with('success', 'Aviso creado correctamente.');
     }
 
 }
