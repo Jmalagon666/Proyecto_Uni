@@ -67,7 +67,6 @@ class RolesController extends Controller
     {
 
         //$roles->syncPermissions($request->permisos);
-  
         $role->permissions()->sync($request->permisos);
         return redirect()->route('roles.edit',$role);
     }

@@ -18,8 +18,6 @@
         Gestión de Avisos
     </div>
     <div class="card-body">
-        <a href="#" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#agregarRolModal">Agregar
-            Rol</a>
         <table class="table table-striped">
             {{-- Setup data for datatables --}}
             @php

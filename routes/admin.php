@@ -9,8 +9,23 @@ use App\Http\Controllers\Roles\RolesController;
 use App\Http\Controllers\Permisos\PermisosController;
 use App\Http\Controllers\Asignarrol\AsignarrolController;
 
+
+
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+
+
 Route::get('/admin', [HomeController::class, 'index'])->name('admin.index'); 
-Route::get('/coordinador', [CoordinadorController::class, 'index'])->name('coordinador.index');
 Route::get('/profesor', [ProfesorController::class, 'index'])->name('profesor.index');
 Route::delete('/profesor/destroy/{id}', [ProfesorController::class, 'destroy'])->name('profesor.destroy');
 Route::get('/profesor/edit/{id}', [ProfesorController::class, 'edit'])->name('profesor.edit');
@@ -45,3 +60,14 @@ Route::get('/asignar', [AsignarrolController::class, 'index'])->name('asignarrol
 Route::get('/asignar/{user}/edit', [AsignarrolController::class, 'edit'])->name('asignar.edit');
 Route::delete('/asignar/{user}', [AsignarrolController::class, 'destroy'])->name('asignar.destroy');
 Route::put('/asignar/{user}', [AsignarrolController::class, 'update'])->name('asignar.update');
+
+Route::get('/coordinador', [CoordinadorController::class, 'index'])->name('coordinador.index');
+Route::delete('/coordinador/destroy/{id}', [CoordinadorController::class, 'destroy'])->name('coordinador.destroy');
+Route::get('/coordinador/edit/{id}', [CoordinadorController::class, 'edit'])->name('coordinador.edit');
+//Route::put('/coordinador/update/{id}', [CoordinadorController::class, 'update'])->name('coordinador.update');
+Route::put('/coordinador/update/{id}', [CoordinadorController::class, 'update'])->name('coordinador.update');
+
+Route::post('/coordinador/store', [CoordinadorController::class, 'store'])->name('coordinador.store');
+
+
+

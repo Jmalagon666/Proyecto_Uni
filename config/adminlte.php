@@ -314,44 +314,79 @@ return [
         [
             'text' => 'Roles',
             'route' => 'roles.index',
-            // 'can' => 'manage-blog',
+            'can' => 'Admin Config',
         ],
         [
             'text' => 'Permisos',
             'route' => 'permisos.index',
             'icon' => 'far fa-fw fa-file',
+            'can' => 'Admin Config',
         ],
         [
-            'text' => 'Usuarios',
+            'text' => 'Roles Usuarios',
             'route' => 'asignarrol.index',
             'icon' => 'far fa-fw fa-file',
+            'can' => 'Admin Config',
         ],
-        ['header' => 'Roles'],
+        ['header' => 'Modulos',
+        'can' => 'Admin Config',
+        ],
             
         [
             'text' => 'Admin',
             'route' => 'admin.index',
             'icon' => 'fas fa-fw fa-hammer', 
-            //'can' => 'admin',
+            'can' => 'Admin Config',
         ],
         [
             'text' => 'Coordinador',
             'route' => 'coordinador.index',
             'icon' => 'fas fa-fw fa-user',
-            //'can' => 'user',
+            'can' => 'Admin Config',
         ],
         [
             'text' => 'Profesor',
             'route' => 'profesor.index',
             'icon' => 'fas fa-fw fa-book', 
-            //'can' => 'profe',
+            'can' => 'Admin Config',
         ],
         [
             'text' => 'Padres',
             'route' => 'padres.index',
             'icon' => 'fas fa-fw fa-users',
-            //'can' => 'padre',
+            'can' => 'Admin Config',
         ],
+        [
+            'header' => 'Padres',
+            'can' => 'padre',
+        ],
+        [
+            'text' => 'Padres',
+            'route' => 'padres.index',
+            'icon' => 'fas fa-fw fa-users',
+            'can' => 'padre', // Asegúrate de que el permiso sea correcto
+        ],
+        [
+            'header' => 'Profesor', // Nuevo encabezado para Profesor
+            'can' => 'profesor', // Asegúrate de que el permiso sea correcto
+        ],
+        [
+            'text' => 'Profesor',
+            'route' => 'profesor.index',
+            'icon' => 'fas fa-fw fa-book', 
+            'can' => 'profesor', // Asegúrate de que el permiso sea correcto
+        ],
+        [
+            'header' => 'Coordinador', // Nuevo encabezado para Coordinador
+            'can' => 'coordinador', // Asegúrate de que el permiso sea correcto
+        ],
+        [
+            'text' => 'Coordinador',
+            'route' => 'coordinador.index',
+            'icon' => 'fas fa-fw fa-user',
+            'can' => 'coordinador', // Asegúrate de que el permiso sea correcto
+        ]
+        
         // [
         //     'text' => 'multilevel',
         //     'icon' => 'fas fa-fw ',
