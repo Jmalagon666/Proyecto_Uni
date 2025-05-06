@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Coordinador;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Estudiantes;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CoordinadorController extends Controller
 {
@@ -105,4 +107,20 @@ class CoordinadorController extends Controller
 
         return redirect()->route('coordinador.index')->with('success', 'Estudientes eliminado correctamente.');
     }
+
+    public function generarpdf()
+    {
+        $data = ['titulo' => 'Reporte de Estudiantes', 'estudiantes' => Estudiantes::all()];
+        $pdf = Pdf::loadView('reportes.reporteestudiantes', $data);
+        return $pdf->stream('estudiantes.pdf');
+    }
+    public function exportarExcel()
+    {
+        return \Excel::download(new \App\Exports\EstudiantesExport, 'estudiantes.xlsx');
+    }
+    public function exportarCSV()
+    {
+        return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\EstudiantesExport, 'estudiantes.csv', \Maatwebsite\Excel\Excel::CSV);
+    }
+
 }

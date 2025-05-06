@@ -20,6 +20,15 @@
         <div class="card-body">
             <a href="#" class="btn btn-success mb-3" data-bs-toggle="modal"
                 data-bs-target="#agregarEstudientesModal">Agregar Estudiante</a>
+            <a href="{{ route('coordinador.generarpdf') }}" target="_blank" class="btn btn-danger mb-3">
+                <i class="fas fa-file-pdf"></i> Descargar PDF
+            </a>
+            <a href="{{ route('coordinador.exportarExcel') }}" class="btn btn-success mb-3">
+                <i class="fas fa-file-excel"></i> Descargar Excel
+            </a>
+            <a href="{{ route('coordinador.exportarCSV') }}" class="btn btn-primary mb-3">
+                <i class="fas fa-file-csv"></i> Descargar CSV
+            </a>
             <table class="table table-striped">
                 {{-- Setup data for datatables --}}
                 @php

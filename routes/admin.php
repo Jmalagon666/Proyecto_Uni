@@ -69,5 +69,9 @@ Route::put('/coordinador/update/{id}', [CoordinadorController::class, 'update'])
 
 Route::post('/coordinador/store', [CoordinadorController::class, 'store'])->name('coordinador.store');
 
+Route::get('/generarpdf', [CoordinadorController::class, 'generarpdf'])->name('coordinador.generarpdf');
+Route::get('/exportarExcel', [CoordinadorController::class, 'exportarExcel'])->name('coordinador.exportarExcel');
+Route::get('/exportarCSV', [CoordinadorController::class, 'exportarCSV'])->name('coordinador.exportarCSV');
+
 
 
