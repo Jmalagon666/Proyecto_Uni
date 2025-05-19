@@ -31,6 +31,8 @@ Route::delete('/profesor/destroy/{id}', [ProfesorController::class, 'destroy'])-
 Route::get('/profesor/edit/{id}', [ProfesorController::class, 'edit'])->name('profesor.edit');
 Route::put('/profesor/update/{id}', [ProfesorController::class, 'update'])->name('profesor.update');
 Route::get('/padres', [PadresController::class, 'index'])->name('padres.index');
+Route::get('/padres/asistencia', [PadresController::class, 'vista_asistencia'])->name('padres.asistencia');
+Route::get('/padres/calificaciones', [PadresController::class, 'vista_calificaciones'])->name('padres.calificaciones');
 Route::post('/profesor/store', [ProfesorController::class, 'store'])->name('profesor.store');
 Route::get('/padres/mensajes', function () {
     return view('padres.mensajes');

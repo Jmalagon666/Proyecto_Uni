@@ -12,4 +12,14 @@ class PadresController extends Controller
         return view('Padres.index');
     }
 
+    public function vista_asistencia()
+    {
+        return view('Padres.asistencia');
+    }
+
+    public function vista_calificaciones()
+    {
+        return view('Padres.calificaciones');
+    }
+
 }
